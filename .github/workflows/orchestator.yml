@@ -1,0 +1,19 @@
+name: App Orchestrator
+
+on:
+    push:
+        branches: ["main"]
+
+permissions:
+    contents: write
+    packages: write
+    deployments: write
+
+jobs:
+    devsecops:
+        uses: jairbs98/devops-workflows/.github/workflows/controller.yml@main
+        with:
+            app_name: "devsecops-secure-deployer"
+            app_type: "github-action-node"
+            deploy_type: "none"
+        secrets: inherit

@@ -1,0 +1,29 @@
+name: "DevSecOps Secure Deployer"
+description: "Ejecuta despliegues remotos por SSH mitigando riesgos de inyección de comandos."
+author: "DevOps Team"
+
+inputs:
+  vps_ip: { required: true, description: "IP del servidor destino" }
+  vps_user: { required: true, description: "Usuario SSH" }
+  ssh_private_key: { required: true, description: "Llave privada SSH" }
+
+  mode: { required: true, description: "Modo de operación (deploy o destroy)" }
+  app_name: { required: true, description: "Nombre de la aplicación" }
+  image_tag: { required: true, description: "Etiqueta de la imagen Docker" }
+  host_url: { required: false, description: "URL para el ruteo en Traefik" }
+  port: { required: false, description: "Puerto interno del contenedor" }
+
+  github_token: { required: true, description: "Token para GHCR" }
+  github_repository: { required: true, description: "Repositorio actual" }
+  github_actor: { required: true, description: "Usuario que ejecuta la acción" }
+
+  app_env_vars:
+    { required: false, description: "Variables de entorno en texto multilinea" }
+  secret_key: { required: false, description: "Llave secreta de la app" }
+  db_name: { required: false, description: "Nombre de base de datos" }
+  db_user: { required: false, description: "Usuario de BD" }
+  db_pass: { required: false, description: "Password de BD" }
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
