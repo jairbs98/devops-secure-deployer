@@ -1,6 +1,6 @@
 {
     "name": "devops-secure-deployer",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "index.js",
     "scripts": {
         "build": "ncc build index.js -o dist --license licenses.txt"
@@ -11,5 +11,8 @@
     },
     "devDependencies": {
         "@vercel/ncc": "^0.38.1"
+    },
+    "overrides": {
+        "undici": "^6.24.0"
     }
 }

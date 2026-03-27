@@ -25,5 +25,5 @@ inputs:
   db_pass: { required: false, description: "Password de BD" }
 
 runs:
-  using: "node20"
+  using: "node24"
   main: "dist/index.js"
